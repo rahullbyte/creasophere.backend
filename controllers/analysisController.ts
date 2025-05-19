@@ -13,7 +13,7 @@ export const handleAnalysis = async (req: Request, res: Response) => {
   if (!query) return res.status(400).json({ error: 'Missing query' });
 
   try {
-    const filePath = path.join(__dirname, '../data/Sample_data.xlsx');
+     const filePath = path.join(process.cwd(), 'data', 'Sample_data.xlsx');
     const { data, chartData, filteredTable } = await parseExcel(filePath, query);
 
     const summary = await getLLMSummary(query, data);
